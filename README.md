@@ -1,2 +1,2 @@
 # CompetitiveCodingSolutions
-Questoins from HaackerEarth mainly.
+Questoins from HackerEarth mainly.
