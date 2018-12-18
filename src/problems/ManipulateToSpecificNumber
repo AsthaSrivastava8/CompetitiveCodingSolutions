@@ -1,0 +1,53 @@
+/*The first line contains 2 integers they are Samarpit's Key value and the Lock's key value.
+The second line contains N indicating the number of other keys Samarpit has. 
+Third line contains N space separated integers indicating the value of N other keys.
+
+The minimum time required to get to the Lock's Key.If he is unable to reach that print -1.
+
+For example if his key value was X and he took a key with value Y the his new key will be (X*Y)%100000.
+The other key that was used during the merging process remains along with other N-1 keys.
+*/
+
+package strangerThings;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Dhoom4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner sc = new Scanner(System.in);
+
+		String[] input = sc.nextLine().split(" ");
+
+		int hisKey = Integer.parseInt(input[0]);
+		int otherKey = Integer.parseInt(input[1]);
+
+		int numberOfOperations = 0;
+		input = sc.nextLine().split(" ");
+		int otherKeysCount = Integer.parseInt(input[0]);
+
+		String[] otherKeys = sc.nextLine().split(" ");
+		int[] otherKeysValues = new int[otherKeysCount];
+
+		for (int i = 0; i < otherKeys.length; i++)
+			otherKeysValues[i] = Integer.parseInt(otherKeys[i]);
+
+		Arrays.sort(otherKeysValues);
+
+		for (int i = 0; i < otherKeysValues.length; i++) {
+			if (hisKey == otherKey) {
+				break;
+			} else if (hisKey * otherKeysValues[i] > hisKey) {
+				numberOfOperations++;
+				hisKey *= otherKeysValues[i];
+			}
+		}
+
+		System.out.println(numberOfOperations);
+
+	}
+
+}
