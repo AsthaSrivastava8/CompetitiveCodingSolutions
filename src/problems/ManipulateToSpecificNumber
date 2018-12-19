@@ -18,6 +18,7 @@ public class Dhoom4 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		
 		Scanner sc = new Scanner(System.in);
 
 		String[] input = sc.nextLine().split(" ");
@@ -30,23 +31,35 @@ public class Dhoom4 {
 		int otherKeysCount = Integer.parseInt(input[0]);
 
 		String[] otherKeys = sc.nextLine().split(" ");
-		int[] otherKeysValues = new int[otherKeysCount];
+		int[] otherKeysValues = new int[otherKeysCount + 1];
 
 		for (int i = 0; i < otherKeys.length; i++)
 			otherKeysValues[i] = Integer.parseInt(otherKeys[i]);
 
-		Arrays.sort(otherKeysValues);
+		otherKeysValues[otherKeysCount] = hisKey;
 
-		for (int i = 0; i < otherKeysValues.length; i++) {
-			if (hisKey == otherKey) {
-				break;
-			} else if (hisKey * otherKeysValues[i] > hisKey) {
-				numberOfOperations++;
-				hisKey *= otherKeysValues[i];
+		int[] factorsOfOtherKey = new int[20];
+		int numberOfFactors = 0;
+		for (int i = 2; i < otherKey; i++) {
+			if (otherKey % i == 0) {
+				factorsOfOtherKey[numberOfFactors++] = i;
 			}
 		}
 
+		numberOfFactors -= 2;
+
+		for (int val : otherKeysValues) {
+			System.out.println(val);
+		}
+
+		System.out.println("################");
+
+		for (int i = 0; i < numberOfFactors; i++) {
+			System.out.println(factorsOfOtherKey[i]);
+		}
+
 		System.out.println(numberOfOperations);
+
 
 	}
 
