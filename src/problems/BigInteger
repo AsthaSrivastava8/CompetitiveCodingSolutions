@@ -1,0 +1,28 @@
+import java.math.*;
+import java.util.*;
+
+class Problem2 {
+	public static void main(String args[]) throws Exception {
+
+      	Scanner sc = new Scanner(System.in);
+		int testCases = Integer.parseInt(sc.nextLine());
+		List<BigDecimal> answers = new ArrayList<BigDecimal>();
+		double n;
+		BigInteger k;
+	    BigInteger num = new BigInteger("1");
+		BigInteger modVal = new BigInteger("1000000007");
+		for (int i = 0; i < testCases; i++) {
+			String[] input = sc.nextLine().split(" ");
+			n = Double.parseDouble(input[0]);
+			k = new BigInteger(input[1]);
+			BigInteger temp = null;
+			temp = k;
+			k = k.subtract(num);
+			for (int j = 0; j < n - 1; j++) {
+				temp = temp.multiply(k);
+			}
+			System.out.println(temp.mod(modVal));
+		}
+
+	}
+}
