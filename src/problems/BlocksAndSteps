@@ -1,0 +1,47 @@
+package tmp;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+public class ThoughtWorks {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		List<String> answers = new ArrayList<String>();
+		int t = Integer.parseInt(sc.nextLine());
+		for (int j = 0; j < t; j++) {
+			List<String> answer = new ArrayList<String>();
+			int q = Integer.parseInt(sc.nextLine());
+			String[] input = sc.nextLine().split(" ");
+			int[] blocks = new int[q];
+			for (int i = 0; i < q; i++)
+				blocks[i] = Integer.parseInt(input[i]);
+			input = sc.nextLine().split(" ");
+			int[] steps = new int[q];
+			for (int i = 0; i < q; i++)
+				steps[i] = Integer.parseInt(input[i]);
+
+			for (int i = 0; i < q; i++) {
+				int temp = 0;
+				int[] tempArray = Arrays.copyOfRange(blocks, 0, i + 1);
+				Arrays.sort(tempArray);
+				for (int k = 0; k < steps[i]; k++) {
+					if (temp < tempArray[k]) {
+						temp = tempArray[k];
+					}
+				}
+				answer.add(Integer.toString(temp));
+			}
+			String tempString = "";
+			for (String val : answer) {
+				tempString += val + " ";
+			}
+			answers.add(tempString.trim() + " ");
+
+		}
+		for (int i = 0; i < answers.size(); i++)
+			System.out.println(answers.get(i));
+	}
+}
